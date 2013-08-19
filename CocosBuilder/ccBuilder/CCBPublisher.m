@@ -162,7 +162,92 @@
         return YES;
     }
     
+    
+    /* 
+     
+     Publish Localization XML 
+     
+    */
+    
+    // Get localization texts from node graph.
+    NSMutableDictionary* localiztionXmlDict = [[NSMutableDictionary alloc] init];
+    NSDictionary* nodeGraph = [doc objectForKey:@"nodeGraph"];
+//    int keyCounter = 0;
+    
+    NSString *strippedFileName = [[dstFile lastPathComponent] stringByDeletingPathExtension];
+    
+    [self getLocalizedTextFromNode:nodeGraph xmlDict:localiztionXmlDict];
+    
+    // Write localization texts to file
+    NSMutableString* localizationFileStr = [[NSMutableString alloc] init];
+    
+    [localizationFileStr appendString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"];
+    [localizationFileStr appendString:@"<resources xmlns:tools=\"http://schemas.android.com/tools\">\n"];
+    
+    for (NSString* key in localiztionXmlDict) {
+        [localizationFileStr appendFormat:@"    <string name=\"%@\"><![CDATA[%@]]></string>\n", key, [localiztionXmlDict objectForKey:key]];
+    }
+    
+    [localizationFileStr appendString:@"</resources>"];
+    
+    NSString *directory = [outputDir stringByAppendingPathComponent:@"localization"];
+    
+    NSFileManager *fileManager= [NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:directory isDirectory:NO]){
+        if(![fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL]){
+            NSLog(@"Error: Create folder failed %@", directory);
+        }
+    }
+    
+    NSString *docFile = [directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.xml", strippedFileName]];
+    
+    BOOL localizationXmlPublishSuccessful = [localizationFileStr writeToFile:docFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    if (!localizationXmlPublishSuccessful)
+    {
+        NSLog(@"Failed to  Publish Localization Xml");
+    }
+    
+    
     return YES;
+}
+
+- (void) getLocalizedTextFromNode:(NSDictionary*)node xmlDict:(NSMutableDictionary*)xmlDict
+{
+    NSString* baseClassName = [node objectForKey:@"baseClass"];
+    
+    if([baseClassName isEqualToString:@"CCLabelTTF"] ||
+       [baseClassName isEqualToString:@"CCLabelBMFont"] ||
+       [baseClassName isEqualToString:@"CCLabelTTFv2"] ||
+       [baseClassName isEqualToString:@"CCLabelBMFontv2"]) {
+        
+        NSArray* properties = [node objectForKey:@"properties"];
+        
+        NSString* localizationKey = @"";
+        NSString* localizationText = @"";
+        
+        for (NSDictionary* prop in properties) {
+            NSString* propName = [prop objectForKey:@"name"];
+            if ([propName isEqualToString:@"instanceName"]) {
+                localizationKey = [prop objectForKey:@"value"];
+                /*
+                if([localizationKey isEqualToString:@""]){
+                    localizationKey = [NSString stringWithFormat:@"%@_%d", fileName, keyCounter];
+                    keyCounter++;
+                }
+                */
+            }
+            else if ([propName isEqualToString:@"string"]) {
+                localizationText = [prop objectForKey:@"value"];
+            }
+        }
+        
+        [xmlDict setObject:localizationText forKey:localizationKey];
+    }
+    
+    NSArray* children = [node objectForKey:@"children"];
+    for (NSDictionary* child in children) {
+        [self getLocalizedTextFromNode:child xmlDict:xmlDict];
+    }
 }
 
 - (BOOL) copyFileIfChanged:(NSString*)srcFile to:(NSString*)dstFile forResolution:(NSString*)resolution isSpriteSheet:(BOOL)isSpriteSheet outDir: (NSString*)outDir srcDate: (NSDate*) srcDate

@@ -42,6 +42,16 @@
 			<string>Visible</string>
 		</dict>
 		<dict>
+			<key>default</key>
+			<string></string>
+			<key>displayName</key>
+			<string>Instance Name</string>
+			<key>type</key>
+			<string>String</string>
+			<key>name</key>
+			<string>instanceName</string>
+		</dict>
+		<dict>
 			<key>defaultSerialization</key>
 			<array>
 				<integer>0</integer>
