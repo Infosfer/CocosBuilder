@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>inheritsFrom</key>
+	<string>CCLabelTTF</string>
+	<key>canHaveChildren</key>
+	<string>NO</string>
+	<key>className</key>
+	<string>CCLabelTTFv2</string>
+	<key>editorClassName</key>
+	<string>CCLabelTTFv2</string>
+	<key>properties</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>CCLabelTTFv2</string>
+			<key>displayName</key>
+			<string>CCLabelTTFv2</string>
+			<key>type</key>
+			<string>Separator</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>Shrink</string>
+			<key>type</key>
+			<string>Check</string>
+			<key>name</key>
+			<string>shrink</string>
+		</dict>
+	</array>
+	<key>propertiesOverriden</key>
+	<array>
+		<dict>
+			<key>default</key>
+			<array>
+				<integer>240</integer>
+				<integer>60</integer>
+			</array>
+			<key>readOnly</key>
+			<true/>
+			<key>type</key>
+			<string>Size</string>
+			<key>name</key>
+			<string>contentSize</string>
+			<key>displayName</key>
+			<string>Content size</string>
+		</dict>
+		<dict>
+			<key>affectsProperties</key>
+			<array>
+				<string>contentSize</string>
+			</array>
+			<key>default</key>
+			<array>
+				<integer>240</integer>
+				<integer>60</integer>
+			</array>
+			<key>displayName</key>
+			<string>Dimensions</string>
+			<key>type</key>
+			<string>Size</string>
+			<key>name</key>
+			<string>dimensions</string>
+		</dict>
+	</array>
+</dict>
+</plist>
