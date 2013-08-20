@@ -149,6 +149,7 @@
 		A77EF594171FD3B200451DA4 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A77EF58F171FD30E00451DA4 /* cwebp */; };
 		B232713317BB605D00020C6B /* CCLabelBMFontv2.m in Sources */ = {isa = PBXBuildFile; fileRef = B232713017BB605D00020C6B /* CCLabelBMFontv2.m */; };
 		B232713417BB605D00020C6B /* CCLabelTTFv2.m in Sources */ = {isa = PBXBuildFile; fileRef = B232713217BB605D00020C6B /* CCLabelTTFv2.m */; };
+		B2ADE9CC17C2453C009852BE /* CCParticleSystemQuadv2.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ADE9CB17C2453C009852BE /* CCParticleSystemQuadv2.m */; };
 		E3127AA516C1D8E600D09AA4 /* CCBDirectoryComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3127AA416C1D8E600D09AA4 /* CCBDirectoryComparer.m */; };
 		E312972E16CC33B200A09155 /* SequencerPopoverBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */; };
 		E312973316CC377700A09155 /* SequencerPopoverBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E312973216CC377700A09155 /* SequencerPopoverBlock.m */; };
@@ -1085,6 +1086,8 @@
 		B232713017BB605D00020C6B /* CCLabelBMFontv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelBMFontv2.m; sourceTree = "<group>"; };
 		B232713117BB605D00020C6B /* CCLabelTTFv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelTTFv2.h; sourceTree = "<group>"; };
 		B232713217BB605D00020C6B /* CCLabelTTFv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelTTFv2.m; sourceTree = "<group>"; };
+		B2ADE9CA17C2453C009852BE /* CCParticleSystemQuadv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCParticleSystemQuadv2.h; sourceTree = "<group>"; };
+		B2ADE9CB17C2453C009852BE /* CCParticleSystemQuadv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCParticleSystemQuadv2.m; sourceTree = "<group>"; };
 		E3127AA316C1D8E600D09AA4 /* CCBDirectoryComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBDirectoryComparer.h; sourceTree = "<group>"; };
 		E3127AA416C1D8E600D09AA4 /* CCBDirectoryComparer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBDirectoryComparer.m; sourceTree = "<group>"; };
 		E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SequencerPopoverBlock.xib; sourceTree = "<group>"; };
@@ -3303,6 +3306,8 @@
 		E36A270F152263B4004986A8 /* cocos2d */ = {
 			isa = PBXGroup;
 			children = (
+				B2ADE9CA17C2453C009852BE /* CCParticleSystemQuadv2.h */,
+				B2ADE9CB17C2453C009852BE /* CCParticleSystemQuadv2.m */,
 				B232712F17BB605D00020C6B /* CCLabelBMFontv2.h */,
 				B232713017BB605D00020C6B /* CCLabelBMFontv2.m */,
 				B232713117BB605D00020C6B /* CCLabelTTFv2.h */,
@@ -5300,6 +5305,7 @@
 				E3F2C21314FC157E007B660D /* CCBXCocos2diPhoneWriter.m in Sources */,
 				B232713317BB605D00020C6B /* CCLabelBMFontv2.m in Sources */,
 				B232713417BB605D00020C6B /* CCLabelTTFv2.m in Sources */,
+				B2ADE9CC17C2453C009852BE /* CCParticleSystemQuadv2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
