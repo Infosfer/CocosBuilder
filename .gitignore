@@ -50,6 +50,4 @@ Backup[ ]of[ ]*.numbers/
 CocosPlayer/CocosPlayer.xcodeproj/xcshareddata/xcschemes/CocosPlayer.xcscheme
 Version.txt
 
-/CocosBuilder/CocosBuilder.xcodeproj/project.pbxproj
-
 /CocosPlayer/CocosPlayer.xcodeproj/project.pbxproj
