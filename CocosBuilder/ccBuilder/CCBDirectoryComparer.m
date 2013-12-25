@@ -103,7 +103,7 @@
 - (void) dealloc
 {
     [super dealloc];
-    [_files release];
+    //[_files release];
 }
 
 @end
