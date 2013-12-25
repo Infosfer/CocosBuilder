@@ -165,7 +165,7 @@
     
     /* 
      
-     Publish Localization XML 
+     Publish Localization XML
      
     */
     
@@ -174,39 +174,40 @@
     NSDictionary* nodeGraph = [doc objectForKey:@"nodeGraph"];
 //    int keyCounter = 0;
     
-    NSString *strippedFileName = [[dstFile lastPathComponent] stringByDeletingPathExtension];
+    NSString* strippedFileName = [[dstFile lastPathComponent] stringByDeletingPathExtension];
     
     [self getLocalizedTextFromNode:nodeGraph xmlDict:localiztionXmlDict];
     
-    // Write localization texts to file
-    NSMutableString* localizationFileStr = [[NSMutableString alloc] init];
-    
-    [localizationFileStr appendString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"];
-    [localizationFileStr appendString:@"<resources xmlns:tools=\"http://schemas.android.com/tools\">\n"];
-    
-    for (NSString* key in localiztionXmlDict) {
-        [localizationFileStr appendFormat:@"    <string name=\"%@\"><![CDATA[%@]]></string>\n", key, [localiztionXmlDict objectForKey:key]];
-    }
-    
-    [localizationFileStr appendString:@"</resources>"];
-    
-    NSString *directory = [outputDir stringByAppendingPathComponent:@"localization"];
-    
-    NSFileManager *fileManager= [NSFileManager defaultManager];
-    if(![fileManager fileExistsAtPath:directory isDirectory:NO]){
-        if(![fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL]){
-            NSLog(@"Error: Create folder failed %@", directory);
+    if ([[localiztionXmlDict allKeys] count] != 0) {
+        // Write localization texts to file
+        NSMutableString* localizationFileStr = [[NSMutableString alloc] init];
+        
+        [localizationFileStr appendString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"];
+        [localizationFileStr appendString:@"<resources xmlns:tools=\"http://schemas.android.com/tools\">\n"];
+        
+        for (NSString* key in localiztionXmlDict) {
+            [localizationFileStr appendFormat:@"    <string name=\"%@\"><![CDATA[%@]]></string>\n", key, [localiztionXmlDict objectForKey:key]];
+        }
+        
+        [localizationFileStr appendString:@"</resources>"];
+        
+        NSString* directory = [outputDir stringByAppendingPathComponent:@"localization"];
+        
+        NSFileManager* fileManager= [NSFileManager defaultManager];
+        if(![fileManager fileExistsAtPath:directory isDirectory:NO]){
+            if(![fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:NULL]){
+                NSLog(@"Error: Create folder failed %@", directory);
+            }
+        }
+        
+        NSString* docFile = [directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.xml", strippedFileName]];
+        
+        BOOL localizationXmlPublishSuccessful = [localizationFileStr writeToFile:docFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        if (!localizationXmlPublishSuccessful)
+        {
+            NSLog(@"Failed to  Publish Localization Xml");
         }
     }
-    
-    NSString *docFile = [directory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.xml", strippedFileName]];
-    
-    BOOL localizationXmlPublishSuccessful = [localizationFileStr writeToFile:docFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    if (!localizationXmlPublishSuccessful)
-    {
-        NSLog(@"Failed to  Publish Localization Xml");
-    }
-    
     
     return YES;
 }
