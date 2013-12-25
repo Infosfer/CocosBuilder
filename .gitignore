@@ -49,3 +49,7 @@ Backup[ ]of[ ]*.numbers/
 *.ccbresourcelog
 CocosPlayer/CocosPlayer.xcodeproj/xcshareddata/xcschemes/CocosPlayer.xcscheme
 Version.txt
+
+/CocosBuilder/CocosBuilder.xcodeproj/project.pbxproj
+
+/CocosPlayer/CocosPlayer.xcodeproj/project.pbxproj
