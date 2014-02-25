@@ -147,9 +147,6 @@
 		A09AB6F714E993AA009C8B91 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = A09AB6F614E993AA009C8B91 /* fps_images.png */; };
 		A77EF590171FD30E00451DA4 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A77EF58F171FD30E00451DA4 /* cwebp */; };
 		A77EF594171FD3B200451DA4 /* cwebp in Resources */ = {isa = PBXBuildFile; fileRef = A77EF58F171FD30E00451DA4 /* cwebp */; };
-		B232713317BB605D00020C6B /* CCLabelBMFontv2.m in Sources */ = {isa = PBXBuildFile; fileRef = B232713017BB605D00020C6B /* CCLabelBMFontv2.m */; };
-		B232713417BB605D00020C6B /* CCLabelTTFv2.m in Sources */ = {isa = PBXBuildFile; fileRef = B232713217BB605D00020C6B /* CCLabelTTFv2.m */; };
-		B2ADE9CC17C2453C009852BE /* CCParticleSystemQuadv2.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ADE9CB17C2453C009852BE /* CCParticleSystemQuadv2.m */; };
 		DD24580D1842D2B1008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
 		DD24580E1842D2B1008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
 		DD24580F1842D2B2008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
@@ -166,7 +163,10 @@
 		DD2458241842D2F3008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
 		DD2458251842D2F3008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
 		DD2458261842D2F4008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
-		DDC88BFB186AFE7100665132 /* CCFontDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC88BFA186AFE7100665132 /* CCFontDefinition.m */; };
+		DDAE1A5118BCCC1800B9D1AF /* CCParticleSystemQuadv2.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAE1A4D18BCCBB700B9D1AF /* CCParticleSystemQuadv2.m */; };
+		DDAE1A5218BCCC2100B9D1AF /* CCLabelTTFv2.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAE1A4B18BCCBB700B9D1AF /* CCLabelTTFv2.m */; };
+		DDAE1A5318BCCC2600B9D1AF /* CCLabelBMFontv2.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAE1A4918BCCBB700B9D1AF /* CCLabelBMFontv2.m */; };
+		DDAE1A6118BCD00300B9D1AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDAE1A6018BCD00300B9D1AF /* Images.xcassets */; };
 		DDC88BFE186AFE9700665132 /* CCFontDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC88BFA186AFE7100665132 /* CCFontDefinition.m */; };
 		E3127AA516C1D8E600D09AA4 /* CCBDirectoryComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3127AA416C1D8E600D09AA4 /* CCBDirectoryComparer.m */; };
 		E312972E16CC33B200A09155 /* SequencerPopoverBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */; };
@@ -1100,12 +1100,13 @@
 		A09AB6AE14E9935F009C8B91 /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
 		A09AB6F614E993AA009C8B91 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = "libs/cocos2d-iphone/Resources/Fonts/fps_images.png"; sourceTree = SOURCE_ROOT; };
 		A77EF58F171FD30E00451DA4 /* cwebp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = cwebp; sourceTree = "<group>"; };
-		B232712F17BB605D00020C6B /* CCLabelBMFontv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelBMFontv2.h; sourceTree = "<group>"; };
-		B232713017BB605D00020C6B /* CCLabelBMFontv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelBMFontv2.m; sourceTree = "<group>"; };
-		B232713117BB605D00020C6B /* CCLabelTTFv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelTTFv2.h; sourceTree = "<group>"; };
-		B232713217BB605D00020C6B /* CCLabelTTFv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelTTFv2.m; sourceTree = "<group>"; };
-		B2ADE9CA17C2453C009852BE /* CCParticleSystemQuadv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCParticleSystemQuadv2.h; sourceTree = "<group>"; };
-		B2ADE9CB17C2453C009852BE /* CCParticleSystemQuadv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCParticleSystemQuadv2.m; sourceTree = "<group>"; };
+		DDAE1A4818BCCBB700B9D1AF /* CCLabelBMFontv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelBMFontv2.h; sourceTree = "<group>"; };
+		DDAE1A4918BCCBB700B9D1AF /* CCLabelBMFontv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelBMFontv2.m; sourceTree = "<group>"; };
+		DDAE1A4A18BCCBB700B9D1AF /* CCLabelTTFv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLabelTTFv2.h; sourceTree = "<group>"; };
+		DDAE1A4B18BCCBB700B9D1AF /* CCLabelTTFv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLabelTTFv2.m; sourceTree = "<group>"; };
+		DDAE1A4C18BCCBB700B9D1AF /* CCParticleSystemQuadv2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCParticleSystemQuadv2.h; sourceTree = "<group>"; };
+		DDAE1A4D18BCCBB700B9D1AF /* CCParticleSystemQuadv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCParticleSystemQuadv2.m; sourceTree = "<group>"; };
+		DDAE1A6018BCD00300B9D1AF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CocosBuilder/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		DDC88BF9186AFE7100665132 /* CCFontDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFontDefinition.h; sourceTree = "<group>"; };
 		DDC88BFA186AFE7100665132 /* CCFontDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCFontDefinition.m; sourceTree = "<group>"; };
 		E3127AA316C1D8E600D09AA4 /* CCBDirectoryComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBDirectoryComparer.h; sourceTree = "<group>"; };
@@ -2526,6 +2527,7 @@
 				E335CB071577C55F00A612EE /* Node info */,
 				776041E21498F5A70078095D /* Util */,
 				776041EE1498FC320078095D /* GUI Util */,
+				DDAE1A6018BCD00300B9D1AF /* Images.xcassets */,
 				7789ABC9133AA82000CEFCC7 /* Supporting Files */,
 			);
 			name = CocosBuilder;
@@ -3326,14 +3328,14 @@
 		E36A270F152263B4004986A8 /* cocos2d */ = {
 			isa = PBXGroup;
 			children = (
+				DDAE1A4818BCCBB700B9D1AF /* CCLabelBMFontv2.h */,
+				DDAE1A4918BCCBB700B9D1AF /* CCLabelBMFontv2.m */,
+				DDAE1A4A18BCCBB700B9D1AF /* CCLabelTTFv2.h */,
+				DDAE1A4B18BCCBB700B9D1AF /* CCLabelTTFv2.m */,
+				DDAE1A4C18BCCBB700B9D1AF /* CCParticleSystemQuadv2.h */,
+				DDAE1A4D18BCCBB700B9D1AF /* CCParticleSystemQuadv2.m */,
 				DDC88BF9186AFE7100665132 /* CCFontDefinition.h */,
 				DDC88BFA186AFE7100665132 /* CCFontDefinition.m */,
-				B2ADE9CA17C2453C009852BE /* CCParticleSystemQuadv2.h */,
-				B2ADE9CB17C2453C009852BE /* CCParticleSystemQuadv2.m */,
-				B232712F17BB605D00020C6B /* CCLabelBMFontv2.h */,
-				B232713017BB605D00020C6B /* CCLabelBMFontv2.m */,
-				B232713117BB605D00020C6B /* CCLabelTTFv2.h */,
-				B232713217BB605D00020C6B /* CCLabelTTFv2.m */,
 				E3893C8B1666B9F500299482 /* CCClippingNode.h */,
 				E3893C8C1666B9F500299482 /* CCClippingNode.m */,
 				E3893C8D1666B9F500299482 /* CCDrawNode.h */,
@@ -4649,6 +4651,7 @@
 				E3E8B49A15793AF800373983 /* seq-btn-restart.png in Resources */,
 				E3E8B49B15793AF800373983 /* seq-btn-run.png in Resources */,
 				E3E8B49C15793AF800373983 /* seq-btn-stepback.png in Resources */,
+				DDAE1A6118BCD00300B9D1AF /* Images.xcassets in Resources */,
 				E3E8B49D15793AF800373983 /* seq-btn-stepforward.png in Resources */,
 				E3E8B49E15793AF800373983 /* seq-btn-stop.png in Resources */,
 				E3E8B4A4157CD5DB00373983 /* seq-scrub-handle.png in Resources */,
@@ -4996,6 +4999,7 @@
 				E3B7AEDD14E3246100DFD402 /* PlugInManager.m in Sources */,
 				E3B7AEE014E32E7F00DFD402 /* PlugInNode.m in Sources */,
 				E3B7AEEC14E342E200DFD402 /* InspectorPosition.m in Sources */,
+				DDAE1A5118BCCC1800B9D1AF /* CCParticleSystemQuadv2.m in Sources */,
 				E3B7AEEF14E34A4D00DFD402 /* InspectorValue.m in Sources */,
 				E3FEA8AA14E45F1000119FBE /* InspectorSize.m in Sources */,
 				E3FEA8AF14E47C7500119FBE /* InspectorPoint.m in Sources */,
@@ -5206,6 +5210,7 @@
 				E380B2531642FC3C0006D31C /* Tupac.mm in Sources */,
 				E380B25A164330360006D31C /* PlayerDeviceInfo.m in Sources */,
 				E3618D5616655041009F5805 /* CCBPublisherTemplate.m in Sources */,
+				DDAE1A5218BCCC2100B9D1AF /* CCLabelTTFv2.m in Sources */,
 				E3893C971666B9F500299482 /* CCClippingNode.m in Sources */,
 				E3893C981666B9F500299482 /* CCDrawNode.m in Sources */,
 				E3893C991666B9F500299482 /* ccFPSImages.m in Sources */,
@@ -5239,6 +5244,7 @@
 				E3A4746D16D4389D00DB0D61 /* CDOpenALSupport.m in Sources */,
 				E3A4746E16D4389D00DB0D61 /* CDXMacOSXSupport.m in Sources */,
 				E3A4746F16D4389D00DB0D61 /* CDXPropertyModifierAction.m in Sources */,
+				DDAE1A5318BCCC2600B9D1AF /* CCLabelBMFontv2.m in Sources */,
 				E3A4747016D4389D00DB0D61 /* CocosDenshion.m in Sources */,
 				E3A4747216D4389D00DB0D61 /* SimpleAudioEngine.m in Sources */,
 				E3B5EE8916D6E0AA00C07990 /* InspectorFloatXY.m in Sources */,
@@ -5333,13 +5339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDC88BFB186AFE7100665132 /* CCFontDefinition.m in Sources */,
 				DD24580D1842D2B1008A9F82 /* PlugInManager.m in Sources */,
 				E398C03B14FB8F850078E771 /* CCBXCocos2diPhone.m in Sources */,
 				E3F2C21314FC157E007B660D /* CCBXCocos2diPhoneWriter.m in Sources */,
-				B232713317BB605D00020C6B /* CCLabelBMFontv2.m in Sources */,
-				B232713417BB605D00020C6B /* CCLabelTTFv2.m in Sources */,
-				B2ADE9CC17C2453C009852BE /* CCParticleSystemQuadv2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5689,6 +5691,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5725,6 +5728,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
