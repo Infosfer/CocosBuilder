@@ -504,6 +504,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = Zynga;
+				TargetAttributes = {
+					E3F6A04716499A7600550B13 = {
+						DevelopmentTeam = VRSDM8Z69W;
+					};
+				};
 			};
 			buildConfigurationList = E3F6A04216499A7600550B13 /* Build configuration list for PBXProject "CocosPlayer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -720,6 +725,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -740,6 +747,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../CocosBuilder/libs/cocos2d-iphone/cocos2d ../CocosBuilder/libs/cocos2d-iphone/external/JavaScript/jsbindings/src/** ../CocosBuilder/libs/cocos2d-iphone/external/kazmath/include ../CocosBuilder/libs/cocos2d-iphone/external/Chipmunk/include/chipmunk ../CocosBuilder/libs/cocos2d-iphone/external/JavaScript/SpiderMonkey/ios/include ../CocosBuilder/libs/cocos2d-iphone/external/CocosBuilderReader ../CocosBuilder/libs/cocos2d-iphone/CocosDenshion";
 				WRAPPER_EXTENSION = app;
 			};
@@ -749,6 +757,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CocosPlayer/Prefix.pch;
@@ -768,6 +778,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../CocosBuilder/libs/cocos2d-iphone/cocos2d ../CocosBuilder/libs/cocos2d-iphone/external/JavaScript/jsbindings/src/** ../CocosBuilder/libs/cocos2d-iphone/external/kazmath/include ../CocosBuilder/libs/cocos2d-iphone/external/Chipmunk/include/chipmunk ../CocosBuilder/libs/cocos2d-iphone/external/JavaScript/SpiderMonkey/ios/include ../CocosBuilder/libs/cocos2d-iphone/external/CocosBuilderReader ../CocosBuilder/libs/cocos2d-iphone/CocosDenshion";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
