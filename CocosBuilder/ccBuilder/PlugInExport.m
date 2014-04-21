@@ -25,6 +25,7 @@
 #import "PlugInExport.h"
 #import "ProjectSettings.h"
 #import "CCBX.h"
+#import "CCBXCocos2diPhone.h"
 
 @implementation PlugInExport
 
@@ -48,12 +49,32 @@
     return self;
 }
 
+- (id) initDefault
+{
+    self = [super init];
+    if (!self) return NULL;
+
+    // Load plug-in properties
+    CCBX* exporter = [[[CCBXCocos2diPhone alloc] init] autorelease];
+    extension = [[exporter extension] retain];
+
+    return self;
+}
+
 - (NSData*) exportDocument:(NSDictionary*)doc
 {
     Class exporterClass = [bundle principalClass];
     CCBX* exporter = [[[exporterClass alloc] init] autorelease];
     exporter.serializedProjectSettings = [projectSettings serialize];
     
+    return [exporter exportDocument:doc flattenPaths:flattenPaths];
+}
+
+- (NSData*) exportDocumentDefault:(NSDictionary*)doc
+{
+    CCBX* exporter = [[[CCBXCocos2diPhone alloc] init] autorelease];
+    exporter.serializedProjectSettings = [projectSettings serialize];
+
     return [exporter exportDocument:doc flattenPaths:flattenPaths];
 }
 

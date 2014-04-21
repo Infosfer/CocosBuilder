@@ -1144,12 +1144,12 @@
                 if (deviceInfo.hasRetinaDisplay)
                 {
                     // iPad retina
-                    publishForResolutions = [NSArray arrayWithObjects:@"ipadhd", nil];
+                    publishForResolutions = [NSArray arrayWithObjects:@"ipadhd", @"large", nil];
                 }
                 else
                 {
                     // iPad normal
-                    publishForResolutions = [NSArray arrayWithObjects:@"ipad", @"hd", nil];
+                    publishForResolutions = [NSArray arrayWithObjects:@"ipad", @"hd", @"medium", nil];
                 }
             }
             else if ([deviceInfo.deviceType isEqualToString:@"iPhone"])
@@ -1157,11 +1157,11 @@
                 // iPhone
                 if (deviceInfo.hasRetinaDisplay)
                 {
-                    publishForResolutions = [NSArray arrayWithObjects:@"iphonehd", nil];
+                    publishForResolutions = [NSArray arrayWithObjects:@"iphonehd", @"medium", nil];
                 }
                 else
                 {
-                    publishForResolutions = [NSArray arrayWithObjects:@"iphone", nil];
+                    publishForResolutions = [NSArray arrayWithObjects:@"iphone", @"small", nil];
                 }
             }
             else if ([deviceInfo.deviceType isEqualToString:@"Android"])

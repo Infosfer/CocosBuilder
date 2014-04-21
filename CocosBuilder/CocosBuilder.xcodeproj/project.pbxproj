@@ -168,6 +168,10 @@
 		DDAE1A5318BCCC2600B9D1AF /* CCLabelBMFontv2.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAE1A4918BCCBB700B9D1AF /* CCLabelBMFontv2.m */; };
 		DDAE1A6118BCD00300B9D1AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDAE1A6018BCD00300B9D1AF /* Images.xcassets */; };
 		DDC88BFE186AFE9700665132 /* CCFontDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC88BFA186AFE7100665132 /* CCFontDefinition.m */; };
+		DDFCA42F19015FEF00149B00 /* CCBXCocos2diPhone.h in Sources */ = {isa = PBXBuildFile; fileRef = E398C03914FB8F850078E771 /* CCBXCocos2diPhone.h */; };
+		DDFCA43019015FEF00149B00 /* CCBXCocos2diPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E398C03A14FB8F850078E771 /* CCBXCocos2diPhone.m */; };
+		DDFCA43119015FEF00149B00 /* CCBXCocos2diPhoneWriter.h in Sources */ = {isa = PBXBuildFile; fileRef = E3F2C21114FC157E007B660D /* CCBXCocos2diPhoneWriter.h */; };
+		DDFCA43219015FEF00149B00 /* CCBXCocos2diPhoneWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2C21214FC157E007B660D /* CCBXCocos2diPhoneWriter.m */; };
 		E3127AA516C1D8E600D09AA4 /* CCBDirectoryComparer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3127AA416C1D8E600D09AA4 /* CCBDirectoryComparer.m */; };
 		E312972E16CC33B200A09155 /* SequencerPopoverBlock.xib in Resources */ = {isa = PBXBuildFile; fileRef = E312972D16CC33B200A09155 /* SequencerPopoverBlock.xib */; };
 		E312973316CC377700A09155 /* SequencerPopoverBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E312973216CC377700A09155 /* SequencerPopoverBlock.m */; };
@@ -4126,9 +4130,9 @@
 				7789ABBB133AA82000CEFCC7 /* Frameworks */,
 				7789ABBC133AA82000CEFCC7 /* Resources */,
 				776C6897138878FB00153214 /* Copy Files (Sparkle framework) */,
-				E3B7AED414E31E5D00DFD402 /* Copy PlugIns */,
 				E3E086E315663928008F1FDB /* Copy Player */,
 				E33BC1931510B2BD009AE29A /* Copy Built Product to Local Repository Directory */,
+				E3B7AED414E31E5D00DFD402 /* Copy PlugIns */,
 			);
 			buildRules = (
 			);
@@ -5398,6 +5402,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFCA42F19015FEF00149B00 /* CCBXCocos2diPhone.h in Sources */,
+				DDFCA43019015FEF00149B00 /* CCBXCocos2diPhone.m in Sources */,
+				DDFCA43119015FEF00149B00 /* CCBXCocos2diPhoneWriter.h in Sources */,
+				DDFCA43219015FEF00149B00 /* CCBXCocos2diPhoneWriter.m in Sources */,
 				FA98CFD7154E828E006E58C5 /* PlugInManager.m in Sources */,
 				FA98CFD9154E828E006E58C5 /* PlugInExport.m in Sources */,
 				FA98CFD1154E7F7D006E58C5 /* CCBX.m in Sources */,

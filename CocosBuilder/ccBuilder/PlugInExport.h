@@ -41,6 +41,8 @@
 @property (nonatomic,retain) ProjectSettings* projectSettings;
 
 - (id) initWithBundle:(NSBundle*) bundle;
+- (id) initDefault;
 - (NSData*) exportDocument:(NSDictionary*)doc;
+- (NSData*) exportDocumentDefault:(NSDictionary*)doc;
 
 @end

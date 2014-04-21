@@ -141,7 +141,7 @@ int		main(int argc, const char **argv)
 				continue;
 			}
 			
-			NSData				*outData = [plugin exportDocument:dict];
+			NSData				*outData = [plugin exportDocumentDefault:dict];
 			
 			if (!outData)
 			{

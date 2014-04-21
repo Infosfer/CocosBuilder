@@ -65,31 +65,13 @@
 - (void) loadPlugIns
 {
     // Locate the plug ins
-#if CCB_BUILDING_COMMANDLINE
-    // This shouldn't be hardcoded.
-    NSURL* appURL = nil;
-    OSStatus error = LSFindApplicationForInfo(kLSUnknownCreator, (CFStringRef)@"com.cocosbuilder.CocosBuilder", NULL, NULL, (CFURLRef *)&appURL);
-    NSBundle *appBundle = nil;
-    
-    if (error == noErr)
-    {
-        appBundle = [NSBundle bundleWithURL:appURL];
-        [appURL release]; // LS documents that the URL returned must be released.
-    }
-    else
-        appBundle = [NSBundle bundleWithIdentifier:@"com.cocosbuilder.CocosBuilder"]; // last-ditch effort
-    
-    if (!appBundle)
-        return;
-#else
+#if !CCB_BUILDING_COMMANDLINE
     NSBundle* appBundle = [NSBundle mainBundle];
-#endif
-    
+
     NSURL* plugInDir = [appBundle builtInPlugInsURL];
-    
+
     NSArray* plugInPaths = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:plugInDir includingPropertiesForKeys:NULL options:NSDirectoryEnumerationSkipsHiddenFiles error:NULL];
 
-#if !CCB_BUILDING_COMMANDLINE    
     // Load PlugIn nodes
     for (int i = 0; i < [plugInPaths count]; i++)
     {
@@ -123,34 +105,48 @@
             plugIn.icon = [[[NSImage alloc] initWithContentsOfFile:[bundle pathForImageResource:@"Icon.png"]] autorelease];
         }
     }
-#endif
-    
+
     // Load PlugIn exporters
     for (int i = 0; i < [plugInPaths count]; i++)
     {
         NSURL* plugInPath = [plugInPaths objectAtIndex:i];
-        
+
         // Verify that this is an exporter plug-in
         if (![[plugInPath pathExtension] isEqualToString:@"ccbPlugExport"]) continue;
-        
+
         // Load the bundle
         NSBundle* bundle = [NSBundle bundleWithURL:plugInPath];
         if (bundle)
         {
             NSLog(@"Loading PlugIn: %@", [plugInPath lastPathComponent]);
-            
+
             [bundle load];
-            
+
             PlugInExport* plugIn = [[[PlugInExport alloc] initWithBundle:bundle] autorelease];
+
+            [[[PlugInExport alloc] initWithBundle:bundle] autorelease];
+
             if (plugIn)
             {
                 NSString* plugInName = [[plugInPath lastPathComponent] stringByDeletingPathExtension];
                 plugIn.pluginName = plugInName;
-                
+
                 [plugInsExporters addObject:plugIn];
             }
         }
     }
+
+#else
+    PlugInExport* plugIn = [[[PlugInExport alloc] initDefault] autorelease];
+
+    if (plugIn)
+    {
+        NSString* plugInName = @"Cocos2D iPhone";
+        plugIn.pluginName = plugInName;
+
+        [plugInsExporters addObject:plugIn];
+    }
+#endif // !CCB_BUILDING_COMMANDLINE
 }
 
 - (void) dealloc
