@@ -26,7 +26,41 @@
 #import "PlugInManager.h"
 #import "PlugInExport.h"
 
-static void	parseArgs(NSArray *args, NSString **outPlugin, NSArray **publishPaths, NSURL **outputPath, BOOL *verbose)
+static void getLocalizedTextFromNode(NSDictionary* node, NSMutableDictionary* xmlDict)
+{
+    NSString* baseClassName = [node objectForKey:@"baseClass"];
+
+    if([baseClassName isEqualToString:@"CCLabelTTF"] ||
+       [baseClassName isEqualToString:@"CCLabelBMFont"] ||
+       [baseClassName isEqualToString:@"CCLabelTTFv2"] ||
+       [baseClassName isEqualToString:@"CCLabelBMFontv2"]) {
+
+        NSArray* properties = [node objectForKey:@"properties"];
+
+        NSString* localizationKey = @"";
+        NSString* localizationText = @"";
+
+        for (NSDictionary* prop in properties) {
+            NSString* propName = [prop objectForKey:@"name"];
+            if ([propName isEqualToString:@"instanceName"]) {
+                localizationKey = [prop objectForKey:@"value"];
+            }
+            else if ([propName isEqualToString:@"string"]) {
+                localizationText = [prop objectForKey:@"value"];
+            }
+        }
+
+        [xmlDict setObject:localizationText forKey:localizationKey];
+    }
+
+    NSArray* children = [node objectForKey:@"children"];
+    for (NSDictionary* child in children) {
+        getLocalizedTextFromNode(child, xmlDict);
+    }
+}
+
+
+static void	parseArgs(NSArray *args, NSString **outPlugin, NSArray **publishPaths, NSURL **outputPath, BOOL *verbose, NSURL **localizationPath)
 {
 	*outPlugin = @"ccbi";
 	
@@ -44,7 +78,7 @@ static void	parseArgs(NSArray *args, NSString **outPlugin, NSArray **publishPath
 @"Usage:\n"
 @"%@ [-e <extension>|--extension=<extension>] [-o <outputfile>|--output=<outputfile>] [-v|--verbose] file\n"
 @"%@ [-e <extension>|--extension=<extension>] [-o <outputdir>|--output=<outputdir>] [-v|--verbose] file1 [file2 ...]\n"
-@"%@ -l|--list-available-plugins\n"
+@"%@ -l <localizationdir>\n"
 @"%@ -h|--help\n"
 @"%@ --version\n", prog, prog, prog, prog, prog] UTF8String]);
 			exit(EXIT_SUCCESS);
@@ -56,17 +90,10 @@ static void	parseArgs(NSArray *args, NSString **outPlugin, NSArray **publishPath
 @"Version %@\n", prog, @"1.1"] UTF8String]); // do not hardcode me
 			exit(EXIT_SUCCESS);
 		}
-		else if (stillParsingArgs && ([arg isEqualToString:@"-l"] || [arg isEqualToString:@"--list-available-plugins"]))
-		{
-			fprintf(stdout, "Available plugins:\n");
-			for (PlugInExport *plugin in [[PlugInManager sharedManager] plugInsExporters])
-				fprintf(stdout, "%s\n", [[NSString stringWithFormat:@"%@ - .%@", plugin.pluginName, plugin.extension] UTF8String]);
-			exit(EXIT_SUCCESS);
-		}
-		
+		else if (stillParsingArgs && ([arg isEqualToString:@"-l"]))
+			*localizationPath = [[NSURL fileURLWithPath:[args objectAtIndex:++i]] absoluteURL];
 		else if (stillParsingArgs && ([arg isEqualToString:@"-v"] || [arg isEqualToString:@"--verbose"]))
 			*verbose = YES;
-
 		else if (stillParsingArgs && [arg isEqualToString:@"-e"])
 			*outPlugin = [args objectAtIndex:++i];
 		else if (stillParsingArgs && [arg hasPrefix:@"-e"])
@@ -118,9 +145,10 @@ int		main(int argc, const char **argv)
 		NSURL					*outputPath = nil;
 		PlugInExport			*plugin = nil;
 		BOOL					verbose = NO;
+        NSURL                   *localizationPath = nil;
 		
 		[[PlugInManager sharedManager] loadPlugIns];
-		parseArgs(args, &pluginExt, &operands, &outputPath, &verbose);
+		parseArgs(args, &pluginExt, &operands, &outputPath, &verbose, &localizationPath);
 		
 		if (!(plugin = [[PlugInManager sharedManager] plugInExportForExtension:pluginExt]))
 		{
@@ -151,8 +179,8 @@ int		main(int argc, const char **argv)
 			}
 			
 			NSURL				*outFile = nil;
-			
-			if (outputPath == nil) // no output path and however many files: construct file name in file's dir
+
+            if (outputPath == nil) // no output path and however many files: construct file name in file's dir
 				outFile = [[file URLByDeletingPathExtension] URLByAppendingPathExtension:plugin.extension];
 			else if (operands.count == 1) // output path and only one file: use output verbatim
 				outFile = outputPath;
@@ -161,8 +189,8 @@ int		main(int argc, const char **argv)
 				outFile = [[[outputPath URLByAppendingPathComponent:file.lastPathComponent] URLByDeletingPathExtension]
 					URLByAppendingPathExtension:plugin.extension];
 			}
-			
-			if (![outData writeToURL:outFile options:NSDataWritingAtomic error:nil])
+
+            if (![outData writeToURL:outFile options:NSDataWritingAtomic error:nil])
 			{
 				fprintf(stderr, "Error: Failed writing %s to %s.\n", [[file absoluteString] UTF8String], [[outFile absoluteString] UTF8String]);
 				++failures;
@@ -173,6 +201,53 @@ int		main(int argc, const char **argv)
 					fprintf(stderr, "Notice: Successfully processed %s.\n", [[file absoluteString] UTF8String]);
 				++succeeds;
 			}
+
+            if (localizationPath) {
+                /*
+
+                 Publish Localization XML
+
+                 */
+
+                // Get localization texts from node graph.
+                NSMutableDictionary* localiztionXmlDict = [[NSMutableDictionary alloc] init];
+                NSDictionary* nodeGraph = [dict objectForKey:@"nodeGraph"];
+
+                NSString* strippedFileName = [[outputPath lastPathComponent] stringByDeletingPathExtension];
+                NSString* localizationDirectory = [localizationPath lastPathComponent];
+
+                getLocalizedTextFromNode(nodeGraph, localiztionXmlDict);
+
+                if ([[localiztionXmlDict allKeys] count] != 0) {
+                    // Write localization texts to file
+                    NSMutableString* localizationFileStr = [[NSMutableString alloc] init];
+
+                    [localizationFileStr appendString:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"];
+                    [localizationFileStr appendString:@"<resources xmlns:tools=\"http://schemas.android.com/tools\">\n"];
+
+                    for (NSString* key in localiztionXmlDict) {
+                        [localizationFileStr appendFormat:@"    <string name=\"%@\"><![CDATA[%@]]></string>\n", key, [localiztionXmlDict objectForKey:key]];
+                    }
+
+                    [localizationFileStr appendString:@"</resources>"];
+
+                    NSFileManager* fileManager= [NSFileManager defaultManager];
+                    if(![fileManager fileExistsAtPath:localizationDirectory isDirectory:NO]){
+                        if(![fileManager createDirectoryAtPath:localizationDirectory withIntermediateDirectories:YES attributes:nil error:NULL]){
+                            NSLog(@"Error: Create folder failed %@", localizationDirectory);
+                        }
+                    }
+
+                    NSString* docFile = [localizationDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.xml", strippedFileName]];
+
+                    BOOL localizationXmlPublishSuccessful = [localizationFileStr writeToFile:docFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                    if (!localizationXmlPublishSuccessful)
+                    {
+                        NSLog(@"Failed to  Publish Localization Xml");
+                    }
+                }
+            }
+
 		}
 		
 		if (verbose)

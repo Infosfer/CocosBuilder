@@ -75,7 +75,7 @@
     CCBX* exporter = [[[CCBXCocos2diPhone alloc] init] autorelease];
     exporter.serializedProjectSettings = [projectSettings serialize];
 
-    return [exporter exportDocument:doc flattenPaths:flattenPaths];
+    return [exporter exportDocument:doc flattenPaths:YES];
 }
 
 - (void) dealloc
