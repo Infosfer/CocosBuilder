@@ -163,6 +163,8 @@
 		DD2458241842D2F3008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
 		DD2458251842D2F3008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
 		DD2458261842D2F4008A9F82 /* PlugInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B7AEDC14E3246100DFD402 /* PlugInManager.m */; };
+		DD5522571BEC868C0015BD0B /* CCBXCocos2diPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E398C03A14FB8F850078E771 /* CCBXCocos2diPhone.m */; };
+		DD55225A1BEC868F0015BD0B /* CCBXCocos2diPhoneWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F2C21214FC157E007B660D /* CCBXCocos2diPhoneWriter.m */; };
 		DDAE1A5118BCCC1800B9D1AF /* CCParticleSystemQuadv2.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAE1A4D18BCCBB700B9D1AF /* CCParticleSystemQuadv2.m */; };
 		DDAE1A5218BCCC2100B9D1AF /* CCLabelTTFv2.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAE1A4B18BCCBB700B9D1AF /* CCLabelTTFv2.m */; };
 		DDAE1A5318BCCC2600B9D1AF /* CCLabelBMFontv2.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAE1A4918BCCBB700B9D1AF /* CCLabelBMFontv2.m */; };
@@ -4133,6 +4135,7 @@
 				E3E086E315663928008F1FDB /* Copy Player */,
 				E33BC1931510B2BD009AE29A /* Copy Built Product to Local Repository Directory */,
 				E3B7AED414E31E5D00DFD402 /* Copy PlugIns */,
+				DD55225B1BEC8AAD0015BD0B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -4923,6 +4926,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		DD55225B1BEC8AAD0015BD0B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -r $SRCROOT/../PluginInfosfer/CCLabelBMFontv2.ccbPlugNode $CONFIGURATION_BUILD_DIR/$PRODUCT_NAME.app/Contents/PlugIns/\ncp -r $SRCROOT/../PluginInfosfer/CCLabelTTFv2.ccbPlugNode $CONFIGURATION_BUILD_DIR/$PRODUCT_NAME.app/Contents/PlugIns/\ncp -r $SRCROOT/../PluginInfosfer/CCParticleSystemv2.ccbPlugNode $CONFIGURATION_BUILD_DIR/$PRODUCT_NAME.app/Contents/PlugIns/";
+		};
 		E33BC1931510B2BD009AE29A /* Copy Built Product to Local Repository Directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4957,6 +4973,7 @@
 				835DB09F171562D6003A2F7B /* MultipartMessageHeader.m in Sources */,
 				835DB0A1171562D6003A2F7B /* MultipartMessageHeaderField.m in Sources */,
 				835DB0A3171562D6003A2F7B /* HTTPAsyncFileResponse.m in Sources */,
+				DD5522571BEC868C0015BD0B /* CCBXCocos2diPhone.m in Sources */,
 				835DB0A5171562D6003A2F7B /* HTTPDataResponse.m in Sources */,
 				835DB0A7171562D6003A2F7B /* HTTPDynamicFileResponse.m in Sources */,
 				835DB0A9171562D6003A2F7B /* HTTPErrorResponse.m in Sources */,
@@ -5158,6 +5175,7 @@
 				E334069B1551725F000FBD0B /* InspectorFloatScale.m in Sources */,
 				E3799EAA1559771E00196B4A /* ProjectSettingsWindow.m in Sources */,
 				E3799EAD155979BF00196B4A /* ProjectSettings.m in Sources */,
+				DD55225A1BEC868F0015BD0B /* CCBXCocos2diPhoneWriter.m in Sources */,
 				E3462867155BF6C50043EAB1 /* ResourceManagerOutlineHandler.m in Sources */,
 				E346286B155C18D80043EAB1 /* SavePanelLimiter.m in Sources */,
 				E3462870155D22290043EAB1 /* CCBPublisher.m in Sources */,

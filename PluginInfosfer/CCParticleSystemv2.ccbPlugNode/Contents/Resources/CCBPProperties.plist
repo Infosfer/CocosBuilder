@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>inheritsFrom</key>
+	<string>CCParticleSystem</string>
+	<key>canHaveChildren</key>
+	<string>NO</string>
+	<key>className</key>
+	<string>CCParticleSystemQuadv2</string>
+	<key>editorClassName</key>
+	<string>CCParticleSystemQuadv2</string>
+	<key>properties</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>CCParticleSystemQuadv2</string>
+			<key>displayName</key>
+			<string>CCParticleSystemQuadv2</string>
+			<key>type</key>
+			<string>Separator</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>PositionType</string>
+			<key>name</key>
+			<string>positionType</string>
+			<key>type</key>
+			<string>IntegerLabeled</string>
+			<key>extra</key>
+			<string>Free|0|Relative|1|Grouped|2</string>
+		</dict>
+	</array>
+</dict>
+</plist>
