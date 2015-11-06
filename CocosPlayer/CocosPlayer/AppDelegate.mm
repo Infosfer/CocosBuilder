@@ -147,7 +147,7 @@ static AppController* appController = NULL;
 							   numberOfSamples:0];
 
 	// Multiple Touches enabled
-	[glView setMultipleTouchEnabled:YES];
+	[glView setMultipleTouchEnabled:NO];
 
 	director_ = (CCDirectorIOS*) [CCDirector sharedDirector];
 	
@@ -190,9 +190,14 @@ static AppController* appController = NULL;
     
 	CCFileUtils *sharedFileUtils = [CCFileUtils sharedFileUtils];
 	[sharedFileUtils setEnableFallbackSuffixes:YES];				// Default: NO. No fallback suffixes are going to be used
-	[sharedFileUtils setiPhoneRetinaDisplaySuffix:@"-medium"];		// Default on iPhone RetinaDisplay is "-hd"
-	[sharedFileUtils setiPadSuffix:@"-medium"];					// Default on iPad is "ipad"
-	[sharedFileUtils setiPadRetinaDisplaySuffix:@"-large"];	// Default on iPad RetinaDisplay is "-ipadhd"
+    [sharedFileUtils setiPhoneRetinaDisplaySuffix:@"-iphonehd"];		// Default on iPhone RetinaDisplay is "-hd"
+    [sharedFileUtils setiPadSuffix:@"-ipad"];					// Default on iPad is "ipad"
+    [sharedFileUtils setiPadRetinaDisplaySuffix:@"-ipadhd"];	// Default on iPad RetinaDisplay is "-ipadhd"
+
+    NSLog(@"Search Path: %@", [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ResourcesCCB"]);
+    NSLog(@"Search Path: %@", [CCBReader ccbDirectoryPath]);
+    NSLog(@"Search Path: %@", [[NSBundle mainBundle] resourcePath]);
+    NSLog(@"Search Path: %@", [[NSBundle mainBundle] resourcePath]);
     
     
     // Configure CCFileUtils for CocosBuilder
@@ -206,7 +211,7 @@ static AppController* appController = NULL;
     sharedFileUtils.enableiPhoneResourcesOniPad = YES;
     sharedFileUtils.searchMode = kCCFileUtilsSearchDirectoryMode;
     [sharedFileUtils buildSearchResolutionsOrder];
-	
+
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 	
@@ -308,19 +313,21 @@ static AppController* appController = NULL;
 
 - (void) restartCocos2d
 {
+    return;
+
     UIView* mainView = [CCDirector sharedDirector].view.superview;
     [[CCDirector sharedDirector].view removeFromSuperview];
     [[CCDirector sharedDirector] end];
     
     director_ = (CCDirectorIOS*)[CCDirector sharedDirector];
     CCGLView *glView = [CCGLView viewWithFrame:[window_ bounds]
-								   pixelFormat:kEAGLColorFormatRGBA8
+								   pixelFormat:kEAGLColorFormatRGB565
 								   depthFormat:0	//GL_DEPTH_COMPONENT24_OES
 							preserveBackbuffer:NO
 									sharegroup:nil
 								 multiSampling:NO
 							   numberOfSamples:0];
-    [glView setMultipleTouchEnabled:YES];
+    [glView setMultipleTouchEnabled:NO];
     
     [director_ setView:glView];
     
@@ -346,14 +353,22 @@ static AppController* appController = NULL;
 	NSLog(@"CocosPlayer: starting new game");
 
     statusLayer = NULL;
-    
+
+    isJSRunning = YES;
+    //[self restartCocos2d];
+
+    [self displayScene];
+
+    return;
+
+
     NSString* fullScriptPath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:@"main.js"];
     if (fullScriptPath)
     {
         isJSRunning = YES;
-        
+
         [self restartCocos2d];
-        
+
         // Load fileLookup file
         [[CCFileUtils sharedFileUtils] loadFilenameLookupDictionaryFromFile:@"fileLookup.plist"];
         
@@ -361,7 +376,6 @@ static AppController* appController = NULL;
         
         // Run script
         [[JSBCore sharedInstance] runScript:@"main.js"];
-        
     }
     else
     {
@@ -395,4 +409,21 @@ static AppController* appController = NULL;
 {
     [server updatePairing];
 }
+
+- (void) displayScene
+{
+    [[CCFileUtils sharedFileUtils] loadFilenameLookupDictionaryFromFile:@"fileLookup.plist"];
+
+    NSString* targetScenePath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:@"Gamescreen.ccbi"];
+    NSLog(@"Cocosplayer target scene path: %@", targetScenePath);
+
+    NSString* testPath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:@"SEGF2/box_front2.png"];
+    NSLog(@"Cocosplayer test image path: %@", testPath);
+
+    CCNode* targetNode = [CCBReader nodeGraphFromFile:targetScenePath owner:NULL parentSize:[[CCDirector sharedDirector] winSize]];
+    CCScene* targetScene = [CCScene node];
+    [targetScene addChild:targetNode];
+    [[CCDirector sharedDirector] replaceScene:targetScene];
+}
+
 @end

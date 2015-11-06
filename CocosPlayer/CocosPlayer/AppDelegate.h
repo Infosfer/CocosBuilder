@@ -66,5 +66,6 @@
 - (void) stopJSApp;
 
 - (void) updatePairing;
+- (void) displayScene;
 
 @end
