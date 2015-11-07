@@ -749,6 +749,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.infosfer.playq.cocosplayer;
 				PRODUCT_NAME = "Cocos Player";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../CocosBuilder/libs/cocos2d-iphone/cocos2d ../CocosBuilder/libs/cocos2d-iphone/external/JavaScript/jsbindings/src/** ../CocosBuilder/libs/cocos2d-iphone/external/kazmath/include ../CocosBuilder/libs/cocos2d-iphone/external/Chipmunk/include/chipmunk ../CocosBuilder/libs/cocos2d-iphone/external/JavaScript/SpiderMonkey/ios/include ../CocosBuilder/libs/cocos2d-iphone/external/CocosBuilderReader ../CocosBuilder/libs/cocos2d-iphone/CocosDenshion";
@@ -784,6 +785,7 @@
 					"-ObjC",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.infosfer.playq.cocosplayer;
 				PRODUCT_NAME = "Cocos Player";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "../CocosBuilder/libs/cocos2d-iphone/cocos2d ../CocosBuilder/libs/cocos2d-iphone/external/JavaScript/jsbindings/src/** ../CocosBuilder/libs/cocos2d-iphone/external/kazmath/include ../CocosBuilder/libs/cocos2d-iphone/external/Chipmunk/include/chipmunk ../CocosBuilder/libs/cocos2d-iphone/external/JavaScript/SpiderMonkey/ios/include ../CocosBuilder/libs/cocos2d-iphone/external/CocosBuilderReader ../CocosBuilder/libs/cocos2d-iphone/CocosDenshion";
